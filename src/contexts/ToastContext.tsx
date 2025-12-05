@@ -65,7 +65,7 @@ export const ToastProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       value={{ showToast, showSuccess, showError, showWarning, showInfo }}
     >
       {children}
-      <div className="fixed top-4 right-4 z-50 flex flex-col gap-3 pointer-events-none">
+      <div className="fixed top-3 right-3 sm:top-4 sm:right-4 z-50 flex flex-col gap-2 sm:gap-3 pointer-events-none">
         {toasts.map((toast) => (
           <div key={toast.id} className="pointer-events-auto">
             <Toast toast={toast} onRemove={removeToast} />
