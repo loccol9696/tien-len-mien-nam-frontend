@@ -3,8 +3,7 @@ import axios from "axios";
 // Mặc định trỏ đến backend đã deploy trên Render.
 // Nếu cần override trong môi trường khác, set VITE_API_URL.
 const API_BASE_URL =
-  import.meta.env.VITE_API_URL ||
-  "https://tien-len-mien-nam-backend.onrender.com/api";
+  import.meta.env.VITE_API_URL || "http://localhost:8080/api";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
