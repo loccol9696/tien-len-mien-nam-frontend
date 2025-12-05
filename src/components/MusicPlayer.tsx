@@ -73,32 +73,36 @@ const MusicPlayer: React.FC = () => {
         ))}
       </audio>
 
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
         {isExpanded ? (
-          <div className="bg-white rounded-lg shadow-2xl p-4 border-2 border-tet-red min-w-[280px] animate-slide-up">
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-lg font-bold text-tet-red flex items-center gap-2">
+          <div className="bg-white rounded-lg shadow-2xl p-3 sm:p-4 border-2 border-tet-red min-w-[260px] sm:min-w-[280px] max-w-[calc(100vw-2rem)] animate-slide-up">
+            <div className="flex items-center justify-between mb-2 sm:mb-3">
+              <h3 className="text-base sm:text-lg font-bold text-tet-red flex items-center gap-2">
                 🎵 Nhạc Tết
               </h3>
               <button
                 onClick={() => setIsExpanded(false)}
-                className="text-gray-400 hover:text-gray-600 transition-colors text-xl"
+                className="text-gray-400 hover:text-gray-600 transition-colors text-lg sm:text-xl flex-shrink-0"
+                aria-label="Đóng"
               >
                 ×
               </button>
             </div>
 
-            <div className="flex items-center gap-3 mb-3">
+            <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
               <button
                 onClick={togglePlay}
-                className="w-12 h-12 rounded-full bg-tet-red text-white flex items-center justify-center hover:bg-tet-dark-red transition-colors shadow-lg"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-tet-red text-white flex items-center justify-center hover:bg-tet-dark-red transition-colors shadow-lg flex-shrink-0"
+                aria-label={isPlaying ? "Tạm dừng" : "Phát"}
               >
                 {isPlaying ? "⏸️" : "▶️"}
               </button>
 
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-sm text-gray-600">🔊</span>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-1 sm:gap-2 mb-1">
+                  <span className="text-xs sm:text-sm text-gray-600 flex-shrink-0">
+                    🔊
+                  </span>
                   <input
                     type="range"
                     min="0"
@@ -108,7 +112,7 @@ const MusicPlayer: React.FC = () => {
                     onChange={handleVolumeChange}
                     className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-tet-red"
                   />
-                  <span className="text-xs text-gray-500 w-8">
+                  <span className="text-xs text-gray-500 w-7 sm:w-8 flex-shrink-0">
                     {Math.round(volume * 100)}%
                   </span>
                 </div>
@@ -119,7 +123,7 @@ const MusicPlayer: React.FC = () => {
               {isPlaying ? "Đang phát nhạc Tết... 🎊" : "Nhấn để phát nhạc Tết"}
             </p>
             {error && (
-              <p className="text-xs text-red-500 text-center mt-2 bg-red-50 p-2 rounded">
+              <p className="text-xs text-red-500 text-center mt-2 bg-red-50 p-2 rounded break-words">
                 {error}
               </p>
             )}
@@ -127,8 +131,9 @@ const MusicPlayer: React.FC = () => {
         ) : (
           <button
             onClick={() => setIsExpanded(true)}
-            className="w-16 h-16 rounded-full bg-tet-red text-white flex items-center justify-center hover:bg-tet-dark-red transition-all shadow-2xl hover:scale-110 text-2xl animate-pulse"
+            className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-tet-red text-white flex items-center justify-center hover:bg-tet-dark-red transition-all shadow-2xl hover:scale-110 text-xl sm:text-2xl animate-pulse"
             title="Nhạc Tết"
+            aria-label="Mở nhạc Tết"
           >
             🎵
           </button>

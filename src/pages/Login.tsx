@@ -99,33 +99,35 @@ const Login: React.FC = () => {
   });
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-10 left-10 text-6xl opacity-20 lantern">
+    <div className="min-h-screen flex items-center justify-center p-3 sm:p-4 relative overflow-hidden">
+      {/* Decorative elements - Hidden on mobile, smaller on tablet */}
+      <div className="hidden sm:block absolute top-10 left-10 text-4xl sm:text-6xl opacity-20 lantern">
         🏮
       </div>
       <div
-        className="absolute top-20 right-20 text-5xl opacity-20 lantern"
+        className="hidden sm:block absolute top-20 right-20 text-3xl sm:text-5xl opacity-20 lantern"
         style={{ animationDelay: "1s" }}
       >
         🏮
       </div>
       <div
-        className="absolute bottom-20 left-20 text-5xl opacity-20 lantern"
+        className="hidden sm:block absolute bottom-20 left-20 text-3xl sm:text-5xl opacity-20 lantern"
         style={{ animationDelay: "0.5s" }}
       >
         🧧
       </div>
       <div
-        className="absolute bottom-10 right-10 text-6xl opacity-20 lantern"
+        className="hidden sm:block absolute bottom-10 right-10 text-4xl sm:text-6xl opacity-20 lantern"
         style={{ animationDelay: "1.5s" }}
       >
         🧧
       </div>
 
       <Card className="max-w-md w-full">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-tet-red mb-2">Đăng nhập</h1>
+        <div className="text-center mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-tet-red mb-2">
+            Đăng nhập
+          </h1>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
@@ -167,11 +169,11 @@ const Login: React.FC = () => {
             Đăng Nhập
           </Button>
 
-          <div className="relative my-6">
+          <div className="relative my-4 sm:my-6">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-gray-300"></div>
             </div>
-            <div className="relative flex justify-center text-sm">
+            <div className="relative flex justify-center text-xs sm:text-sm">
               <span className="px-2 bg-white text-gray-500">Hoặc</span>
             </div>
           </div>
@@ -182,9 +184,9 @@ const Login: React.FC = () => {
             onClick={handleGoogleLogin}
             isLoading={isGoogleLoading}
             disabled={isGoogleLoading || isLoading}
-            className="w-full flex items-center justify-center gap-3"
+            className="w-full flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base"
           >
-            <svg className="w-5 h-5" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24">
               <path
                 fill="#4285F4"
                 d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -205,8 +207,8 @@ const Login: React.FC = () => {
             Đăng nhập với Google
           </Button>
 
-          <div className="text-center mt-6">
-            <p className="text-gray-600">
+          <div className="text-center mt-4 sm:mt-6">
+            <p className="text-gray-600 text-sm sm:text-base">
               Chưa có tài khoản?{" "}
               <Link
                 to="/register"

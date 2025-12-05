@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { GoogleOAuthProvider } from '@react-oauth/google'
-import { AuthProvider } from './contexts/AuthContext'
+import { AuthProvider, useAuth } from './contexts/AuthContext'
 import { ToastProvider } from './contexts/ToastContext'
 import Login from './pages/Login'
 import Register from './pages/Register'
@@ -10,6 +10,12 @@ import PrivateRoute from './components/PrivateRoute'
 import MusicPlayer from './components/MusicPlayer'
 
 const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || ''
+
+// Component để conditionally render MusicPlayer
+const ConditionalMusicPlayer = () => {
+  const { isAuthenticated } = useAuth()
+  return isAuthenticated ? <MusicPlayer /> : null
+}
 
 function App() {
   return (
@@ -31,7 +37,7 @@ function App() {
               />
               <Route path="/" element={<Navigate to="/login" replace />} />
             </Routes>
-            <MusicPlayer />
+            <ConditionalMusicPlayer />
           </Router>
         </AuthProvider>
       </ToastProvider>

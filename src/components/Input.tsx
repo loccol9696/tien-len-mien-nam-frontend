@@ -1,16 +1,16 @@
-import React from 'react'
+import React from "react";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string
-  error?: string
-  icon?: React.ReactNode
+  label?: string;
+  error?: string;
+  icon?: React.ReactNode;
 }
 
 const Input: React.FC<InputProps> = ({
   label,
   error,
   icon,
-  className = '',
+  className = "",
   ...props
 }) => {
   return (
@@ -28,11 +28,13 @@ const Input: React.FC<InputProps> = ({
         )}
         <input
           className={`
-            w-full px-4 py-3 rounded-lg border-2 transition-all duration-300
-            ${icon ? 'pl-10' : ''}
-            ${error 
-              ? 'border-red-500 focus:border-red-500 focus:ring-red-500' 
-              : 'border-tet-red/30 focus:border-tet-red focus:ring-2 focus:ring-tet-red/20'
+            w-full px-3 sm:px-4 py-2 sm:py-2.5 md:py-3 rounded-lg border-2 transition-all duration-300
+            text-sm sm:text-base
+            ${icon ? "pl-8 sm:pl-10" : ""}
+            ${
+              error
+                ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+                : "border-tet-red/30 focus:border-tet-red focus:ring-2 focus:ring-tet-red/20"
             }
             focus:outline-none
             bg-white/80 backdrop-blur-sm
@@ -42,12 +44,9 @@ const Input: React.FC<InputProps> = ({
           {...props}
         />
       </div>
-      {error && (
-        <p className="mt-1 text-sm text-red-600">{error}</p>
-      )}
+      {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
     </div>
-  )
-}
+  );
+};
 
-export default Input
-
+export default Input;

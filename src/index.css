@@ -3,12 +3,33 @@
 @tailwind utilities;
 
 @layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
     @apply bg-gradient-to-br from-red-50 via-yellow-50 to-red-100 font-vietnamese;
-    background-image: 
-      radial-gradient(circle at 20% 50%, rgba(220, 20, 60, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+    background-image: radial-gradient(
+        circle at 20% 50%,
+        rgba(220, 20, 60, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 80%,
+        rgba(255, 215, 0, 0.1) 0%,
+        transparent 50%
+      );
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Prevent text size adjustment on mobile */
+  @media screen and (max-width: 768px) {
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
   }
 }
 
@@ -17,9 +38,9 @@
     position: relative;
     overflow: hidden;
   }
-  
+
   .tet-decoration::before {
-    content: '🎋';
+    content: "🎋";
     position: absolute;
     top: -10px;
     left: -10px;
@@ -27,9 +48,9 @@
     opacity: 0.2;
     animation: float 3s ease-in-out infinite;
   }
-  
+
   .tet-decoration::after {
-    content: '🧧';
+    content: "🧧";
     position: absolute;
     bottom: -10px;
     right: -10px;
@@ -37,22 +58,24 @@
     opacity: 0.2;
     animation: float 3s ease-in-out infinite reverse;
   }
-  
+
   @keyframes float {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0px);
     }
     50% {
       transform: translateY(-10px);
     }
   }
-  
+
   .lantern {
     animation: swing 2s ease-in-out infinite;
   }
-  
+
   @keyframes swing {
-    0%, 100% {
+    0%,
+    100% {
       transform: rotate(-3deg);
     }
     50% {
@@ -123,4 +146,3 @@
     animation: slide-up 0.3s ease-out;
   }
 }
-
