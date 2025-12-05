@@ -120,7 +120,9 @@ const ForgotPassword: React.FC = () => {
         confirmPassword: formData.confirmPassword,
       });
       if (response.success) {
-        showSuccess("Đặt lại mật khẩu thành công! Đang chuyển đến trang đăng nhập...");
+        showSuccess(
+          "Đặt lại mật khẩu thành công! Đang chuyển đến trang đăng nhập..."
+        );
         setTimeout(() => {
           setShowOTPModal(false);
           navigate("/login");
@@ -155,33 +157,33 @@ const ForgotPassword: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-10 left-10 text-6xl opacity-20 lantern">
+    <div className="min-h-screen flex items-center justify-center p-3 sm:p-4 relative overflow-hidden">
+      {/* Decorative elements - Hidden on mobile, smaller on tablet */}
+      <div className="hidden sm:block absolute top-10 left-10 text-4xl sm:text-6xl opacity-20 lantern">
         🏮
       </div>
       <div
-        className="absolute top-20 right-20 text-5xl opacity-20 lantern"
+        className="hidden sm:block absolute top-20 right-20 text-3xl sm:text-5xl opacity-20 lantern"
         style={{ animationDelay: "1s" }}
       >
         🎋
       </div>
       <div
-        className="absolute bottom-20 left-20 text-5xl opacity-20 lantern"
+        className="hidden sm:block absolute bottom-20 left-20 text-3xl sm:text-5xl opacity-20 lantern"
         style={{ animationDelay: "0.5s" }}
       >
         🧧
       </div>
       <div
-        className="absolute bottom-10 right-10 text-6xl opacity-20 lantern"
+        className="hidden sm:block absolute bottom-10 right-10 text-4xl sm:text-6xl opacity-20 lantern"
         style={{ animationDelay: "1.5s" }}
       >
         🧧
       </div>
 
       <Card className="max-w-md w-full">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-tet-red mb-2">
+        <div className="text-center mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-tet-red mb-2">
             Quên Mật Khẩu
           </h1>
         </div>
@@ -206,10 +208,10 @@ const ForgotPassword: React.FC = () => {
             Gửi Mã OTP
           </Button>
 
-          <div className="text-center mt-6">
+          <div className="text-center mt-4 sm:mt-6">
             <Link
               to="/login"
-              className="text-tet-red hover:text-tet-dark-red font-semibold transition-colors"
+              className="text-tet-red hover:text-tet-dark-red font-semibold transition-colors text-sm sm:text-base"
             >
               ← Quay lại đăng nhập
             </Link>
@@ -226,16 +228,18 @@ const ForgotPassword: React.FC = () => {
         }}
         title="Đặt Lại Mật Khẩu"
       >
-        <div className="space-y-5">
+        <div className="space-y-4 sm:space-y-5">
           <div className="text-center">
-            <p className="text-gray-600 text-sm">
+            <p className="text-gray-600 text-xs sm:text-sm">
               Chúng tôi đã gửi mã OTP đến email: <br />
-              <span className="font-semibold text-tet-red">{email}</span>
+              <span className="font-semibold text-tet-red break-all">
+                {email}
+              </span>
             </p>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-tet-dark-red mb-2">
+            <label className="block text-xs sm:text-sm font-medium text-tet-dark-red mb-2">
               Mã OTP
             </label>
             <OTPInput
@@ -276,12 +280,14 @@ const ForgotPassword: React.FC = () => {
           </Button>
 
           <div className="text-center">
-            <p className="text-gray-600 text-sm mb-2">Chưa nhận được mã OTP?</p>
+            <p className="text-gray-600 text-xs sm:text-sm mb-2">
+              Chưa nhận được mã OTP?
+            </p>
             <button
               type="button"
               onClick={handleResendOTP}
               disabled={countdown > 0 || isVerifying}
-              className="text-tet-red hover:text-tet-dark-red font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="text-tet-red hover:text-tet-dark-red font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-xs sm:text-sm"
             >
               {countdown > 0 ? `Gửi lại sau ${countdown}s` : "Gửi lại mã OTP"}
             </button>
