@@ -4,7 +4,7 @@ import axios from "axios";
 // Nếu cần override trong môi trường khác, set VITE_API_URL.
 const API_BASE_URL =
   import.meta.env.VITE_API_URL ||
-  "https://delmar-posthumeral-acrophonically.ngrok-free.dev/api";
+  "https://tien-len-mien-nam-backend.onrender.com/api";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
